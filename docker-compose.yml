@@ -11,7 +11,7 @@ services:
       - 443:443
     environment:
       - MAUTIC_CONTEXT=Production
-      - MAUTIC_SSL_ENABLED=True
+      - MAUTIC_SSL_ENABLED=true
       - MAUTIC_TLS_EMAIL=ops@neos.io
     volumes:
       - .mautic/config:/config
