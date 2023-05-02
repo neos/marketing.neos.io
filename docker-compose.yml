@@ -1,12 +1,18 @@
 version: '3.7'
 services:
   mautic:
-    image: garagist/mautic:4.4.3
+    image: garagist/mautic:composer-8.0
     container_name: mautic
+    restart: unless-stopped
+    depends_on:
+      - database
     ports:
-      - 8090:80
+      - 80:80
+      - 443:443
     environment:
       - MAUTIC_CONTEXT=Production
+      - MAUTIC_SSL_ENABLED=True
+      - MAUTIC_TLS_EMAIL=ops@neos.io
     volumes:
       - .mautic/config:/config
       - .mautic/composer.json:/data/composer.json
@@ -14,7 +20,7 @@ services:
   database:
     image: mysql:8.0
     container_name: database
-    restart: always
+    restart: unless-stopped
     environment:
       - MYSQL_DATABASE=mautic4
       - MYSQL_ROOT_PASSWORD=password
