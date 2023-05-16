@@ -13,8 +13,9 @@ services:
       - MAUTIC_CONTEXT=Production
       - MAUTIC_SSL_ENABLED=true
       - MAUTIC_TLS_EMAIL=ops@neos.io
+      - MAUTIC_DOMAIN=marketing.neos.io
     volumes:
-      - .mautic/config:/config
+      - .mautic/config:/mautic/config
       - .mautic/composer.json:/data/composer.json
 
   database:
