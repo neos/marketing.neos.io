@@ -1,7 +1,7 @@
 version: '3.7'
 services:
   mautic:
-    image: garagist/mautic:composer-8.0
+    image: oidagroup/mautic-worker:main
     container_name: mautic
     restart: unless-stopped
     depends_on:
